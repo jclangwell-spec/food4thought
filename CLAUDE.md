@@ -29,6 +29,7 @@ Phase 1 (accounts + your profile). Step 2 of 7: app shell built. Firebase projec
 - Screens live in `lib/features/<area>/`, shared widgets in `lib/widgets/`. Screens will talk to data only through repository interfaces (from step 3).
 - Before pushing: `dart format lib test`, `flutter analyze` (no issues), `flutter test`.
 - Pushing to `main` or the working branch runs `.github/workflows/deploy-web.yml`: analyze, test, build web, and deploy to Firebase Hosting once the `FIREBASE_SERVICE_ACCOUNT` secret exists. `.firebaserc` holds the project ID.
+- This cloud environment's network policy blocks `*.web.app`, so check deploys via the GitHub Actions job log ("Production deploy succeeded"), and check the UI by building locally and screenshotting with Playwright.
 - Headless Chromium screenshots need `locale: 'en-GB'` set, or the Flutter web app throws a locale error and renders blank.
 
 ## Working with Josh
