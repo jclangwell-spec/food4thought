@@ -3,7 +3,7 @@
 Read `BRIEF.md` first; it is the spec. This file records conventions and decisions that change or extend it.
 
 ## Current phase
-Phase 1 (accounts + your profile). Step 2 of 7: app shell built. Waiting for Josh to set up Firebase Hosting so it deploys to a web link.
+Phase 1 (accounts + your profile). Step 2 of 7: app shell built. Firebase project `food-for-thought-1e4c7` connected; web app deploys to https://food-for-thought-1e4c7.web.app.
 
 ## Decisions (override BRIEF.md where they differ)
 - **Josh tests in Safari on his iPhone via a web link**, not the iOS Simulator. His Mac (MacBook Air 2017, macOS High Sierra) can't run current Flutter/Xcode and he is not updating it. All development happens in Claude Code cloud sessions (Flutter is installed by `.claude/hooks/session-start.sh`).
