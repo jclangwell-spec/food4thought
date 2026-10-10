@@ -46,3 +46,7 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Rules test dependencies
+/firestore-tests/node_modules/
+*-debug.log

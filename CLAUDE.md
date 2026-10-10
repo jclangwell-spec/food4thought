@@ -3,7 +3,7 @@
 Read `BRIEF.md` first; it is the spec. This file records conventions and decisions that change or extend it.
 
 ## Current phase
-Phase 1 (accounts + your profile). Step 2 of 7: app shell built. Firebase project `food-for-thought-1e4c7` connected; web app deploys to https://food-for-thought-1e4c7.web.app.
+Phase 1 (accounts + your profile). Step 3 of 7: Google sign-in built; waiting for Josh's Firebase web-app settings (apiKey, messagingSenderId, appId go in `lib/firebase_options.dart`), Google sign-in enabled and Firestore created. Firebase project `food-for-thought-1e4c7` connected; web app deploys to https://food-for-thought-1e4c7.web.app.
 
 ## Decisions (override BRIEF.md where they differ)
 - **Josh tests in Safari on his iPhone via a web link**, not the iOS Simulator. His Mac (MacBook Air 2017, macOS High Sierra) can't run current Flutter/Xcode and he is not updating it. All development happens in Claude Code cloud sessions (Flutter is installed by `.claude/hooks/session-start.sh`).
@@ -27,7 +27,10 @@ Phase 1 (accounts + your profile). Step 2 of 7: app shell built. Firebase projec
 
 ## Conventions
 - Screens live in `lib/features/<area>/`, shared widgets in `lib/widgets/`. Screens will talk to data only through repository interfaces (from step 3).
-- Before pushing: `dart format lib test`, `flutter analyze` (no issues), `flutter test`.
+- Data access goes through `lib/data/*_repository.dart` interfaces, handed to screens by `AppScope`. Tests use `FakeAuthRepository` (test/support) and `fake_cloud_firestore`.
+- Profiles live at `users/{uid}`; each handle is claimed in `handles/{handle}` in the same transaction.
+- Before pushing: `dart format lib test`, `flutter analyze` (no issues), `flutter test`. If `firestore.rules` changed, also `cd firestore-tests && npm test` (emulator rules tests; needs Java).
+- CI deploys Firestore rules before hosting, using firebase-tools with the same service-account secret.
 - Pushing to `main` or the working branch runs `.github/workflows/deploy-web.yml`: analyze, test, build web, and deploy to Firebase Hosting once the `FIREBASE_SERVICE_ACCOUNT` secret exists. `.firebaserc` holds the project ID.
 - This cloud environment's network policy blocks `*.web.app`, so check deploys via the GitHub Actions job log ("Production deploy succeeded"), and check the UI by building locally and screenshotting with Playwright.
 - Headless Chromium screenshots need `locale: 'en-GB'` set, or the Flutter web app throws a locale error and renders blank.

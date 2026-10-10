@@ -25,6 +25,29 @@ jobs:
       - run: flutter test
       - run: flutter build web --release --no-web-resources-cdn
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: firestore-tests/package-lock.json
+      - name: Test Firestore security rules
+        working-directory: firestore-tests
+        run: |
+          npm ci
+          npm test
+
+      # Rules go first so new app code never runs against old rules.
+      - name: Deploy Firestore security rules
+        if: env.CAN_DEPLOY == 'true'
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
+          GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" \
+            npx --yes firebase-tools@15.32.1 deploy --only firestore:rules \
+            --project food-for-thought-1e4c7 --non-interactive
+          rm -f "$RUNNER_TEMP/sa.json"
+
       - name: Deploy to Firebase Hosting
         if: env.CAN_DEPLOY == 'true'
         uses: FirebaseExtended/action-hosting-deploy@v0
