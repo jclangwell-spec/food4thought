@@ -13,6 +13,7 @@ analyzer:
   exclude:
     - build/**
     - android/**
+    - firestore-tests/**
     - ios/**
     - web/**
 
