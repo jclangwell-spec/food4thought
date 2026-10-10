@@ -30,7 +30,7 @@ Phase 1 (accounts + your profile). Step 3 of 7: Google sign-in built and connect
 - Data access goes through `lib/data/*_repository.dart` interfaces, handed to screens by `AppScope`. Tests use `FakeAuthRepository` (test/support) and `fake_cloud_firestore`.
 - Profiles live at `users/{uid}`; each handle is claimed in `handles/{handle}` in the same transaction.
 - Before pushing: `dart format lib test`, `flutter analyze` (no issues), `flutter test`. If `firestore.rules` changed, also `cd firestore-tests && npm test` (emulator rules tests; needs Java 21+).
-- CI deploys Firestore rules before hosting, using firebase-tools with the same service-account secret.
+- CI deploys Firestore rules before hosting, using firebase-tools with the same service-account secret. That account (firebase-adminsdk-…) needed the extra IAM role "Service Usage Consumer", or firebase-tools fails with a 403 on serviceusage.googleapis.com.
 - Pushing to `main` or the working branch runs `.github/workflows/deploy-web.yml`: analyze, test, build web, and deploy to Firebase Hosting once the `FIREBASE_SERVICE_ACCOUNT` secret exists. `.firebaserc` holds the project ID.
 - This cloud environment's network policy blocks `*.web.app`, so check deploys via the GitHub Actions job log ("Production deploy succeeded"), and check the UI by building locally and screenshotting with Playwright.
 - Headless Chromium screenshots need `locale: 'en-GB'` set, or the Flutter web app throws a locale error and renders blank.
