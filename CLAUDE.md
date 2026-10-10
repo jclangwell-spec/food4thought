@@ -3,7 +3,7 @@
 Read `BRIEF.md` first; it is the spec. This file records conventions and decisions that change or extend it.
 
 ## Current phase
-Phase 1 (accounts + your profile). Step 3 of 7: Google sign-in built; waiting for Josh's Firebase web-app settings (apiKey, messagingSenderId, appId go in `lib/firebase_options.dart`), Google sign-in enabled and Firestore created. Firebase project `food-for-thought-1e4c7` connected; web app deploys to https://food-for-thought-1e4c7.web.app.
+Phase 1 (accounts + your profile). Step 3 of 7: Google sign-in built and connected (web-app settings in `lib/firebase_options.dart`); waiting for Josh to test signing in on his iPhone. Firebase project `food-for-thought-1e4c7` connected; web app deploys to https://food-for-thought-1e4c7.web.app.
 
 ## Decisions (override BRIEF.md where they differ)
 - **Josh tests in Safari on his iPhone via a web link**, not the iOS Simulator. His Mac (MacBook Air 2017, macOS High Sierra) can't run current Flutter/Xcode and he is not updating it. All development happens in Claude Code cloud sessions (Flutter is installed by `.claude/hooks/session-start.sh`).
