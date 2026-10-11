@@ -13,6 +13,7 @@ Phase 1 (accounts + your profile). Step 3 of 7: Google sign-in built and connect
 - **No profile photo in phase 1.** No pre-uploaded photo of Josh; show an initials avatar. Later, users upload their own photo when creating their account.
 - **Look: Strava-like, not Agrumi.** Josh rejected the sky/pastel Agrumi-style samples. Direction is now clean cards, one strong accent colour, bold condensed numbers, reviews shown like activity-feed posts, "Popular this week" as a leaderboard. Use no Strava name, logo or exact colours. This overrides BRIEF.md §6 personality notes (blobs, orbiting plates, sky gradients); Letterboxd structure still applies.
 - **Josh picked style A, "Ember"**: page `#F2F3F5`, white cards, ink `#1E1E24`, one blood-orange accent `#E5482A` (darker `#C2381C` for small text so it passes AA). Barlow for text, Barlow Condensed for headings and big numbers. Dark theme follows the phone setting. Tokens live in `lib/theme/app_colors.dart`; never hard-code colours in screens.
+- **Letterboxd screenshots** from Josh are in `docs/inspiration/` (Home grid, Search browse list, Profile top and bottom). Use them as the layout reference.
 - **Fonts are bundled** in `assets/fonts/` rather than using the `google_fonts` package, so text renders right offline.
 - **Wishlist is kept** as a core feature: users save restaurants they want to visit from Search or the Restaurant page. Phase 1: the Profile "Wishlist" row and list, plus "Add to wishlist" on the Restaurant page.
 
