@@ -26,7 +26,8 @@ class FoodForThoughtApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
-        themeMode: ThemeMode.system,
+        // Dark by default, like Letterboxd. A light mode can come later.
+        themeMode: ThemeMode.dark,
         home: const AuthGate(),
       ),
     );

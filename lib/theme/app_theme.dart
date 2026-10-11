@@ -49,7 +49,22 @@ class AppTheme {
         displaySmall: condensed(28, FontWeight.w700),
         // Restaurant names on cards.
         headlineSmall: condensed(26, FontWeight.w700),
-        // Uppercase section titles like "POPULAR THIS WEEK".
+        // Section headings like "Popular this week" and "Browse by".
+        titleLarge: TextStyle(
+          fontFamily: AppFonts.body,
+          fontSize: 22,
+          fontWeight: FontWeight.w700,
+          color: c.ink,
+        ),
+        // Small spaced-out labels like "FAVOURITES".
+        titleSmall: TextStyle(
+          fontFamily: AppFonts.body,
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 1.6,
+          color: c.inkSecondary,
+        ),
+        // Uppercase titles in sheets, like "WRITE A REVIEW".
         titleMedium: condensed(
           18,
           FontWeight.w700,
@@ -63,38 +78,14 @@ class AppTheme {
           color: c.inkSecondary,
         ),
       ),
-      dividerTheme: DividerThemeData(color: c.line, thickness: 1, space: 1),
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: c.card,
+      appBarTheme: AppBarTheme(
+        backgroundColor: c.bar,
+        foregroundColor: c.ink,
         surfaceTintColor: Colors.transparent,
-        indicatorColor: Colors.transparent,
-        height: 64,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        iconTheme: WidgetStateProperty.resolveWith(
-          (states) => IconThemeData(
-            size: 24,
-            color: states.contains(WidgetState.selected)
-                ? c.accentText
-                : c.inkSecondary,
-          ),
-        ),
-        labelTextStyle: WidgetStateProperty.resolveWith(
-          (states) => TextStyle(
-            fontFamily: AppFonts.body,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: states.contains(WidgetState.selected)
-                ? c.accentText
-                : c.inkSecondary,
-          ),
-        ),
+        scrolledUnderElevation: 0,
+        centerTitle: true,
       ),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: c.accent,
-        foregroundColor: c.onAccent,
-        shape: const CircleBorder(),
-        elevation: 4,
-      ),
+      dividerTheme: DividerThemeData(color: c.line, thickness: 1, space: 1),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: c.card,
         surfaceTintColor: Colors.transparent,

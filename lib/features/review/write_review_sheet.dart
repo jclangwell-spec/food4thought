@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/section_card.dart';
+import '../../widgets/coming_soon.dart';
 
 /// Opened by the + button. The real form arrives in phase 1, step 6.
 Future<void> showWriteReviewSheet(BuildContext context) {
